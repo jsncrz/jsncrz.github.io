@@ -1,0 +1,32 @@
+html {
+    width: 100%;
+    /* fallback for old browsers */
+    background-image: -webkit-linear-gradient(to bottom, #200d3a, #3f194b, #5f265b, #803569, #a24575, #b75478, #ca657b, #dc777f, #e38b81, #e79f87, #eab392, #ecc6a2);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background-image: linear-gradient(to bottom, #200d3a, #3f194b, #5f265b, #803569, #a24575, #b75478, #ca657b, #dc777f, #e38b81, #e79f87, #eab392, #ecc6a2);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+body {
+    overflow: hidden;
+}
+
+#under-con-cont {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#under-con-txt {
+    user-select: none;
+    pointer-events: none;
+    font-family: "Geo", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 4em;
+    color:white;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 8px #fff, 0px 0px 16px #8c00ff, 0px 0px 24px #8c00ff, 0px 0px 32px #8c00ff;
+}
