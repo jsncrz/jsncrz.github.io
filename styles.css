@@ -1,32 +1,205 @@
-html {
-    width: 100%;
-    /* fallback for old browsers */
-    background-image: -webkit-linear-gradient(to bottom, #200d3a, #3f194b, #5f265b, #803569, #a24575, #b75478, #ca657b, #dc777f, #e38b81, #e79f87, #eab392, #ecc6a2);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background-image: linear-gradient(to bottom, #200d3a, #3f194b, #5f265b, #803569, #a24575, #b75478, #ca657b, #dc777f, #e38b81, #e79f87, #eab392, #ecc6a2);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+:root {
+    --text: #f6f7f8;
+    --primary: #ff9d2d;
+    --secondary: #ece0c8;
+    --accent: #912eaa;
+    --bg: #21252b;
+    --bg-alt: #282c34;
+    --border: #ff9d2d;
 }
 
 body {
-    overflow: hidden;
+    font-family: "Space Grotesk ", sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background-color: var(--bg);
+    min-height: 100vh;
+}
+.monospace {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-style: normal;
 }
 
-#under-con-cont {
+#hero-section {
     height: 100vh;
+    z-index: 1000;
+    position: relative;
+    text-align: center;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+}
+#hero-section #hero-title{
+    position: relative;
+    align-self: center;
+    width: fit-content;
+    align-items: center;
+    line-height: normal;
+    justify-self: center;
+    height: auto;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    flex-direction: column;
+    font-size: 2.5rem;
+}
+
+nav {
+    height: 50px;
+    position: sticky;
+    z-index: 1000;
+    background-color: var(--bg);
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
+}
+nav li {
+    margin: 0 1rem;
+}
+nav a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+nav a:hover {
+    color: var(--accent);
 }
 
-#under-con-txt {
-    user-select: none;
-    pointer-events: none;
-    font-family: "Geo", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 4em;
-    color:white;
-    text-transform: uppercase;
-    text-shadow: 0px 0px 8px #fff, 0px 0px 16px #8c00ff, 0px 0px 24px #8c00ff, 0px 0px 32px #8c00ff;
+.profile {
+    padding: 30px 15px 30px 15px;
+    background: var(--bg);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.profile .subtitle {
+    height: 50px;
+    font-size: 1.5rem;
+    color: var(--primary-light);
+    margin-bottom: 1rem;
+}
+
+.profile .description {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    color: var(--primary-light);
+}
+
+.section {
+    background: var(--bg);
+    padding: 2.5rem;
+    transition: transform 0.3s ease;
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--primary);
+    position: relative;
+    display: inline-block;
+}
+
+.section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 3px;
+}
+
+.project-item {
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.project-item h3 {
+    color: var(--primary);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-links {
+    margin-top: 1rem;
+}
+
+.contact-link, .project-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    color: var(--accent);
+    border-radius: 25px;
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    font-weight: 700;
+}
+
+.contact-link:hover, .project-link:hover {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .profile {
+        padding: 2rem;
+    }
+
+    .profile h1 {
+        font-size: 2rem;
+    }
+
+    .profile .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .section {
+        padding: 1.5rem;
+    }
+
+    .section h2 {
+        font-size: 2rem;
+    }
+
+    .contact-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
 }
