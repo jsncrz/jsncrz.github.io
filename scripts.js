@@ -1,26 +1,29 @@
+initialLoad();
+function initialLoad() {
 
-const title = ["Hi, I'm Jason.", "A passionate Full Stack Developer.", "Let's build something powerful together."];
-writeChars('hero-text', title, 0, 0);
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+    const title = ["Hi, I'm Jason.", "A passionate Full Stack Developer.", "Let's build something powerful together."];
+    writeChars('hero-text', title, 0, 0);
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
         });
     });
-});
 
-let slideIndex = 1;
-setInterval(showSlides, 5000);
+    var slideIndex = 1;
+    setTimeout(showSlides, 5000, slideIndex, "slide-resleriana");
+}
 
-function showSlides() {
-    const slides = document.getElementsByClassName("slide");
-    if(slideIndex == slides.length + 1) {slideIndex = 1};
+function showSlides(slideIndex, slideClass) {
+    const slides = document.getElementsByClassName(slideClass);
+    if (slideIndex == slides.length + 1) { slideIndex = 1 };
     for (let i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
     }
     slides[slideIndex - 1].style.display = "block";
-    slideIndex++;
+    setTimeout(showSlides, 5000, slideIndex+1, slideClass);
 }
 function writeChars(elementId, text, index, lineIndex) {
     if (lineIndex < text.length) {
@@ -35,11 +38,11 @@ function writeChars(elementId, text, index, lineIndex) {
             writeChars(elementId, text, index, lineIndex);
         }
     } else {
-        document.getElementById('hero-button').classList.remove('hidden');
+        document.getElementById('hero-button').classList.remove('hidden-animated');
+        document.getElementById('main-body').classList.remove('hidden');
     }
 }
 function goToSection(sectionId) {
-    console.log(sectionId)
     document.getElementById(sectionId).scrollIntoView({
         behavior: 'smooth'
     });

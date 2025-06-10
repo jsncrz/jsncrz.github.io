@@ -28,7 +28,7 @@ body {
     font-style: normal;
 }
 
-.hidden {
+.hidden-animated {
     opacity: 0;
     transition: all 0.5s ease;
     pointer-events: none;
@@ -36,6 +36,10 @@ body {
     -ms-user-select: none;
     user-select: none;
     cursor: default;
+}
+
+.hidden {
+    display: none;
 }
 
 #hero-section {
