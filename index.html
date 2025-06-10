@@ -18,8 +18,20 @@
 
 <body>
     <section id="hero-section">
-        <h1 id="hero-title" class="monospace">
-        </h1>
+        <div id="hero-container">
+            <h1 id="hero-text" class="monospace">
+            </h1>
+            <button id="hero-button" class="hidden" onclick="goToSection('profile-section')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+                    <path fill-rule="evenodd"
+                        d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+                </svg>
+            </button>
+
+        </div>
     </section>
     <nav>
         <ul>
@@ -63,7 +75,20 @@
                 </div>
             </div>
             <div class="project-image">
-                <img src="images/resleriana-1.webp" alt="Resleriana DB">
+                <div class="slideshow-container">
+                    <div class="slide">
+                        <img src="images/resleriana-1.webp" alt="Resleriana DB Character List">
+                    </div>
+                    <div class="slide">
+                        <img src="images/resleriana-2.webp" alt="Resleriana DB Character Details">
+                    </div>
+                    <div class="slide">
+                        <img src="images/resleriana-3.webp" alt="Resleriana DB Memoria List">
+                    </div>
+                    <div class="slide">
+                        <img src="images/resleriana-4.webp" alt="Resleriana DB Memoria Details">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
