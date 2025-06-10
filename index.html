@@ -18,55 +18,115 @@
 
 <body>
     <section id="hero-section">
-        <h1 id="hero-title" class="monospace">
-        </h1>
-    </section>
-    <nav>
-        <ul>
-            <li><a href="#hero-section">Home</a></li>
-            <li><a href="#profile-section">About</a></li>
-            <li><a href="#projects-section">Projects</a></li>
-            <li><a href="#experience-section">Work</a></li>
-        </ul>
-    </nav>
-    <section id="profile-section" class="profile">
-        <h1>Jason Anthony Cruz</h1>
-        <p class="subtitle">Full Stack Developer</p>
-        <p class="description">Detail-oriented Full Stack Developer with 5+ years of experience in Java and JavaScript.
-            I specialize in building scalable web apps with Spring Boot, Angular, React, and Laravel,
-            and enjoy creating clean, user-focused solutions backed by solid backend systems and best practices.
-        </p>
-        <div class="contact-links">
-            <a href="https://www.linkedin.com/in/jason-anthony-cruz/" target="_blank" rel="noopener noreferrer"
-                class="contact-link">LinkedIn</a>
-            <a href="https://github.com/jsncrz" target="_blank" rel="noopener noreferrer"
-                class="contact-link">GitHub</a>
+        <div id="hero-container">
+            <h1 id="hero-text" class="monospace">
+            </h1>
+            <button id="hero-button" class="hidden-animated" onclick="goToSection('profile-section')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+                    <path fill-rule="evenodd"
+                        d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+                </svg>
+            </button>
+
         </div>
     </section>
+    <div id="main-body" class="hidden">
+        <nav>
+            <ul>
+                <li><a href="#hero-section">Home</a></li>
+                <li><a href="#profile-section">About</a></li>
+                <li><a href="#projects-section">Projects</a></li>
+                <li><a href="#experience-section">Work</a></li>
+            </ul>
+        </nav>
+        <section id="profile-section" class="profile">
+            <h1>Jason Anthony Cruz</h1>
+            <p class="subtitle">Full Stack Developer</p>
+            <p class="description">Detail-oriented Full Stack Developer with 5+ years of experience in Java and
+                JavaScript.
+                I specialize in building scalable web apps with Spring Boot, Angular, React, and Laravel,
+                and enjoy creating clean, user-focused solutions backed by solid backend systems and best practices.
+            </p>
+            <div class="contact-links">
+                <a href="https://www.linkedin.com/in/jason-anthony-cruz/" target="_blank" rel="noopener noreferrer"
+                    class="contact-link">LinkedIn</a>
+                <a href="https://github.com/jsncrz" target="_blank" rel="noopener noreferrer"
+                    class="contact-link">GitHub</a>
+            </div>
+        </section>
 
-    <section id="projects-section" class="section">
-        <h2 id="projects-header">Featured Projects</h2>
-        <div class="project-item">
-            <div class="project-description">
-                <h3>Atelier Resleriana Database</h3>
-                <p>A full-stack wiki site for the game Atelier Resleriana, featuring a custom backend, responsive
-                    frontend,
-                    and automated scripts to populate and manage game data in the database. Built to support efficient
-                    content updates and deliver a seamless user experience.</p>
-                <div class="project-links">
-                    <a href="https://github.com/jsncrz/resleriana-DB" target="_blank" rel="noopener noreferrer"
-                        class="project-link">Backend</a>
-                    <a href="https://github.com/jsncrz/resleriana-db-ui" target="_blank" rel="noopener noreferrer"
-                        class="project-link">Frontend</a>
-                    <a href="https://github.com/jsncrz/resleriana-db-sql-generator" target="_blank"
-                        rel="noopener noreferrer" class="project-link">Script Generator</a>
+        <section id="projects-section" class="section">
+            <h2 id="projects-header">Featured Projects</h2>
+            <div class="projects">
+                <div class="project-item">
+                    <div class="project-description">
+                        <h3>Atelier Resleriana Database</h3>
+                        <p>A full-stack wiki site for the game Atelier Resleriana, featuring a custom backend,
+                            responsive
+                            frontend, and automated scripts to populate and manage game data in the database. Built with
+                            Spring Boot and React</p>
+                        <div class="project-links">
+                            <a href="https://github.com/jsncrz/resleriana-DB" target="_blank" rel="noopener noreferrer"
+                                class="project-link">Backend</a>
+                            <a href="https://github.com/jsncrz/resleriana-db-ui" target="_blank"
+                                rel="noopener noreferrer" class="project-link">Frontend</a>
+                            <a href="https://github.com/jsncrz/resleriana-db-sql-generator" target="_blank"
+                                rel="noopener noreferrer" class="project-link">Script Generator</a>
+                        </div>
+                    </div>
+                    <div class="project-image">
+                        <div class="slideshow-container">
+                            <div class="slide slide-resleriana">
+                                <img src="images/resleriana-1.webp" alt="Resleriana DB Character List">
+                            </div>
+                            <div class="slide slide-resleriana">
+                                <img src="images/resleriana-2.webp" alt="Resleriana DB Character Details">
+                            </div>
+                            <div class="slide slide-resleriana">
+                                <img src="images/resleriana-3.webp" alt="Resleriana DB Memoria List">
+                            </div>
+                            <div class="slide slide-resleriana">
+                                <img src="images/resleriana-4.webp" alt="Resleriana DB Memoria Details">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="project-item reverse-row">
+                    <div class="project-description">
+                        <h3>VT Gallery</h3>
+                        <p>A full-stack gallery application that lets users explore and view images based on Twitter/X
+                            tags.
+                            Built with Angular and Express.js.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/jsncrz/tx-gallery-api" target="_blank" rel="noopener noreferrer"
+                                class="project-link">Backend</a>
+                            <a href="https://github.com/jsncrz/tx-gallery" target="_blank" rel="noopener noreferrer"
+                                class="project-link">Frontend</a>
+                        </div>
+                    </div>
+                    <div class="project-image">
+                        <div class="slideshow-container">
+                            <div class="slide slide-vt">
+                                <img src="images/vt-1.webp" alt="VT Gallery View without tags">
+                            </div>
+                            <div class="slide slide-vt">
+                                <img src="images/vt-2.webp" alt="VT Gallery View with tags">
+                            </div>
+                            <div class="slide slide-vt">
+                                <img src="images/vt-3.webp" alt="VT Gallery View mobile">
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            <div class="project-image">
-                <img src="images/resleriana-1.webp" alt="Resleriana DB">
-            </div>
-        </div>
-    </section>
+        </section>
+
+    </div>
 
     <script src="scripts.js"></script>
 </body>
