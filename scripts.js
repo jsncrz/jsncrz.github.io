@@ -15,7 +15,7 @@ function writeChars(elementId, text, index, lineIndex) {
         if (index < text[lineIndex].length) {
             document.getElementById(elementId).innerHTML += text[lineIndex].charAt(index);
             index++;
-            setTimeout(writeChars, 35, elementId, text, index, lineIndex);
+            setTimeout(writeChars, 50, elementId, text, index, lineIndex);
         } else {
             document.getElementById('hero-title').appendChild(document.createElement("br"));
             lineIndex++;
