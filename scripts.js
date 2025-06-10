@@ -1,8 +1,14 @@
 initialLoad();
+const initialized = Boolean(sessionStorage.getItem("initialized"));
+if (initialized) {
+    initializeAll();
+}
 function initialLoad() {
-
     const title = ["Hi, I'm Jason.", "A passionate Full Stack Developer.", "Let's build something powerful together."];
     writeChars('hero-text', title, 0, 0);
+}
+
+function initializeAll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -11,9 +17,9 @@ function initialLoad() {
             });
         });
     });
-
-    var slideIndex = 1;
-    setTimeout(showSlides, 5000, slideIndex, "slide-resleriana");
+    document.getElementById('main-body').classList.remove('hidden');
+    setTimeout(showSlides, 5000, 1, "slide-resleriana");
+    setTimeout(showSlides, 5000, 1, "slide-vt");
 }
 
 function showSlides(slideIndex, slideClass) {
@@ -23,7 +29,7 @@ function showSlides(slideIndex, slideClass) {
         slides[i].style.display = "none";
     }
     slides[slideIndex - 1].style.display = "block";
-    setTimeout(showSlides, 5000, slideIndex+1, slideClass);
+    setTimeout(showSlides, 5000, slideIndex + 1, slideClass);
 }
 function writeChars(elementId, text, index, lineIndex) {
     if (lineIndex < text.length) {
@@ -39,7 +45,10 @@ function writeChars(elementId, text, index, lineIndex) {
         }
     } else {
         document.getElementById('hero-button').classList.remove('hidden-animated');
-        document.getElementById('main-body').classList.remove('hidden');
+        if (!initialized) {
+            initializeAll();
+            sessionStorage.setItem("initialized", true);
+        }
     }
 }
 function goToSection(sectionId) {
