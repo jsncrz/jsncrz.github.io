@@ -338,7 +338,7 @@ nav a:hover {
     background: linear-gradient(45deg, var(--primary), var(--accent), var(--primary), var(--accent));
 	background-size: 200% 200%;
     animation: 3s line-spin ease infinite;
-    border-radius: 1px;
+    border-radius: 3px;
 }
 @keyframes line-spin {
 	0% {
@@ -434,6 +434,7 @@ nav a:hover {
     max-height: 400px;
     max-width: 100%;
     height: auto;
+    border-radius: 15px;
 }
 
 .project-item h3 {
