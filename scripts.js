@@ -70,9 +70,9 @@ function showSlides(slideIndex, slideClass) {
         vtIndex = slideIndex;
     }
     for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
+        slides[i].classList.remove("slide-shown");
     }
-    slides[slideIndex - 1].style.display = "block";
+    slides[slideIndex - 1].classList.add("slide-shown");
 }
 const updateSlide = debounce((slideIndex, slideClass) => showSlides(slideIndex, slideClass));
 
