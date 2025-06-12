@@ -493,6 +493,49 @@ nav a:hover {
 .reverse-row {
     flex-flow: row-reverse wrap;
 }
+/*
+############## FOOTER ##############
+*/
+
+#footer {    
+    color: var(--text);
+    z-index: 1000;
+    position: relative;
+    height: 90px;
+    background: var(--bg-alt);
+    text-align: center;
+}
+
+#footer-button {
+    color: var(--text);
+    background: var(--bg-alt);
+    font-size: 1rem;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 50px;
+    width: 140px;
+    transition: all 0.5s ease;
+    border-radius: 10px;
+    position: absolute;
+    text-shadow: #ece0c8 2px 1px 8px;
+    border: 3px solid var(--primary);
+}
+
+#footer-button:hover {
+    box-shadow: var(--primary) 0px 0px 8px;
+}
+
+.footer-text {
+    font-size: 0.75rem;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+/*
+############## MEDIA QUERIES ##############
+*/
 
 @media (max-width: 768px) {
     .container {
