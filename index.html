@@ -9,7 +9,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
-
+    <script
+        src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-firefly@3/tsparticles.preset.firefly.bundle.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -17,18 +18,13 @@
 </head>
 
 <body>
+    <div id="tsparticles"></div>
     <section id="hero-section">
         <div id="hero-container">
             <h1 id="hero-text" class="monospace">
             </h1>
-            <button id="hero-button" class="hidden-animated" onclick="goToSection('profile-section')">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-chevron-double-down" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
-                    <path fill-rule="evenodd"
-                        d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
-                </svg>
+            <button id="hero-button" onclick="goToSection('profile-section')">
+                Learn more about me
             </button>
 
         </div>
@@ -39,31 +35,63 @@
                 <li><a href="#hero-section">Home</a></li>
                 <li><a href="#profile-section">About</a></li>
                 <li><a href="#projects-section">Projects</a></li>
-                <li><a href="#experience-section">Work</a></li>
             </ul>
         </nav>
-        <section id="profile-section" class="profile">
-            <div class="profile-details">
-                <h1>Jason Anthony Cruz</h1>
-                <p class="subtitle">Full Stack Developer</p>
-                <p class="description">Detail-oriented Full Stack Developer with 5+ years of experience in Java and
-                    JavaScript.
-                    I specialize in building scalable web apps with Spring Boot, Angular, React, and Laravel,
-                    and enjoy creating clean, user-focused solutions backed by solid backend systems and best practices.
-                </p>
-                <div class="contact-links">
-                    <a href="https://www.linkedin.com/in/jason-anthony-cruz/" target="_blank" rel="noopener noreferrer"
-                        class="contact-link">LinkedIn</a>
-                    <a href="https://github.com/jsncrz" target="_blank" rel="noopener noreferrer"
-                        class="contact-link">GitHub</a>
+        <section id="profile-section" class="section">
+            <h2 id="profile-header">About Me</h2>
+            <div class="profile section-flex">
+
+                <div class="profile-details">
+                    <h1>Jason Anthony Cruz</h1>
+                    <p class="subtitle">Full Stack Developer</p>
+                    <p class="description">I’m a full stack software engineer with over 5 years of experience building
+                        web applications. I’ve worked with Java, Kotlin, PHP, and TypeScript, and I enjoy both backend
+                        and frontend development. I like working with others, solving problems, and building things that
+                        scale and work well. Outside of work, you'll find me enjoying a game,
+                        immersed in comics, anime, or watching YouTube videos to learn something new or
+                        unwind with a good story. I’m always curious, whether it's about new tech trends or learning way
+                        too much about a hyper-specific topic I’ll probably never need in real life.
+                    </p>
+                    <div class="contact-links">
+                        <a href="https://www.linkedin.com/in/jason-anthony-cruz/" target="_blank"
+                            rel="noopener noreferrer" class="contact-link">LinkedIn</a>
+                        <a href="https://github.com/jsncrz" target="_blank" rel="noopener noreferrer"
+                            class="contact-link">GitHub</a>
+                    </div>
+                </div>
+                <div class="profile-skills">
+                    <div class="skill"><img src="images/java.webp">
+                        <p>Java</p>
+                    </div>
+                    <div class="skill"><img src="images/javascript.webp">
+                        <p>JavaScript</p>
+                    </div>
+                    <div class="skill"><img src="images/typescript.webp">
+                        <p>TypeScript</p>
+                    </div>
+                    <div class="skill"><img src="images/python.webp">
+                        <p>Python</p>
+                    </div>
+                    <div class="skill"><img src="images/spring.webp">
+                        <p>Spring</p>
+                    </div>
+                    <div class="skill"><img src="images/nodejs.webp">
+                        <p>Node.js</p>
+                    </div>
+                    <div class="skill"><img src="images/angular.webp">
+                        <p>Angular</p>
+                    </div>
+                    <div class="skill"><img src="images/react.webp">
+                        <p>React</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="projects-section" class="section">
             <h2 id="projects-header">Featured Projects</h2>
-            <div class="projects">
-                <div class="project-item">
+            <div class="projects ">
+                <div class="project-item section-flex">
                     <div class="project-description">
                         <h3>Atelier Resleriana Database</h3>
                         <p>A full-stack wiki site for the game Atelier Resleriana, featuring a custom backend,
@@ -93,11 +121,15 @@
                             <div class="slide slide-resleriana">
                                 <img src="images/resleriana-4.webp" alt="Resleriana DB Memoria Details">
                             </div>
+                            <button class="left-arrow"
+                                onclick="updateSlide(reslerianaIndex-1, 'slide-resleriana')">&#10094;</button>
+                            <button class="right-arrow"
+                                onclick="updateSlide(reslerianaIndex+1, 'slide-resleriana')">&#10095;</button>
                         </div>
                     </div>
 
                 </div>
-                <div class="project-item reverse-row">
+                <div class="project-item section-flex reverse-row">
                     <div class="project-description">
                         <h3>VT Gallery</h3>
                         <p>A full-stack gallery application that lets users explore and view images based on Twitter/X
@@ -121,6 +153,8 @@
                             <div class="slide slide-vt">
                                 <img src="images/vt-3.webp" alt="VT Gallery View mobile">
                             </div>
+                            <button class="left-arrow" onclick="updateSlide(vtIndex-1, 'slide-vt')">&#10094;</button>
+                            <button class="right-arrow" onclick="updateSlide(vtIndex+1, 'slide-vt')">&#10095;</button>
                         </div>
                     </div>
 

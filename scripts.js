@@ -1,5 +1,8 @@
 initialLoad();
 const initialized = Boolean(sessionStorage.getItem("initialized"));
+let reslerianaIndex = 1;
+let vtIndex = 1;
+
 if (initialized) {
     initializeAll();
 }
@@ -8,7 +11,35 @@ function initialLoad() {
     writeChars('hero-text', title, 0, 0);
 }
 
+function initializeParticles() {
+    (async () => {
+        await loadFireflyPreset(tsParticles);
+
+        await tsParticles.load({
+            id: "tsparticles",
+            options: {
+                preset: "firefly",
+                background: {
+                    color: "#21252b"
+                },
+                particles: {
+                    size: {
+                        value: { min: 0.1, max: 5 },
+                    },
+                    number: {
+                        limit: { 
+                            mode: "delete",
+                            value: 50
+                        }
+                    }
+                }
+            },
+        });
+    })();
+    
+}
 function initializeAll() {
+    initializeParticles();
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -18,19 +49,33 @@ function initializeAll() {
         });
     });
     document.getElementById('main-body').classList.remove('hidden');
-    setTimeout(showSlides, 5000, 1, "slide-resleriana");
-    setTimeout(showSlides, 5000, 1, "slide-vt");
+    setTimeout(showSlides, 0, reslerianaIndex, "slide-resleriana");
+    setTimeout(showSlides, 0, vtIndex, "slide-vt");
 }
 
+function debounce(func) {
+    let timer;
+    return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => { func.apply(this, args); }, 50);
+    };
+}
 function showSlides(slideIndex, slideClass) {
     const slides = document.getElementsByClassName(slideClass);
     if (slideIndex == slides.length + 1) { slideIndex = 1 };
+    if (slideIndex == 0) { slideIndex = slides.length };
+    if (slideClass === 'slide-resleriana') {
+        reslerianaIndex = slideIndex;
+    } else if (slideClass === 'slide-vt') {
+        vtIndex = slideIndex;
+    }
     for (let i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
     }
     slides[slideIndex - 1].style.display = "block";
-    setTimeout(showSlides, 5000, slideIndex + 1, slideClass);
 }
+const updateSlide = debounce((slideIndex, slideClass) => showSlides(slideIndex, slideClass));
+
 function writeChars(elementId, text, index, lineIndex) {
     if (lineIndex < text.length) {
         if (index < text[lineIndex].length) {

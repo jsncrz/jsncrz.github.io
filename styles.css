@@ -6,12 +6,12 @@
 
 :root {
     --text: #f6f7f8;
-    --primary: #ff9d2d;
+    --primary: #ffb20d;
     --secondary: #ece0c8;
     --accent: #b139cf;
     --bg: #21252b;
     --bg-alt: #282c34;
-    --border: #ff9d2d;
+    --border: #ffb20d;
 }
 
 body {
@@ -21,6 +21,16 @@ body {
     background-color: var(--bg);
     min-height: 100vh;
 }
+
+#tsparticles {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+/*
+############## LANDING VIEW ##############
+*/
 
 #hero-section {
     height: 100vh;
@@ -48,41 +58,82 @@ body {
     user-select: none;
     flex-flow: column wrap;
     text-shadow: 2px 1px 8px #f6f7f880;
+    margin-bottom: 25px;
 }
 
 #hero-button {
-    margin-top: 40px;
-    width: 50px;
+    color: var(--text);
+    background: var(--bg-alt);
+    font-size: 1rem;
+    margin-top: 0 auto;
     height: 50px;
+    width: 200px;
+    padding: 15px;
     transition: all 0.5s ease;
-    background: none;
-    border-color: var(--primary);
-    border-radius: 25px;
-    border-width: 3px;
-    border-style: solid;
     cursor: pointer;
     outline: none;
-    filter: drop-shadow(0px 0px 4px #ff9d2dff);
-
+    border-radius: 5px;
+    border: none;
+    position: relative;
+    text-shadow: #ece0c8 2px 1px 8px;
 }
 
-#hero-button:hover {
-    transform: scale(1.1);
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+#hero-button::after, #hero-button::before {
+    content: '';
+    height: 100%;
+    width: 100%;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s ease;
+    background-image: conic-gradient(from var(--angle),
+        var(--primary),
+        var(--accent),
+        var(--primary),
+        var(--accent),
+        var(--primary)
+    );
+    border-radius: 5px;
+    z-index: -1;
+    padding: 3px;
+    animation: 3s spin cubic-bezier(.86,.12,.13,.89) infinite;
+}
+#hero-button:hover::after, #hero-button:hover::before {
+    animation: 1s spin cubic-bezier(.86,.12,.13,.89) infinite;
+}
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+    to {
+        --angle: 360deg;
+    }
+    
+}
+
+#hero-button:hover::before {
+    filter:blur(1.2rem);
+    opacity: 0.5;
+}
+#hero-button::before {
+    filter:blur(1rem);
+    opacity: 0.3;
 }
 
 #hero-button:focus {
     outline: none;
 }
 
-#hero-button svg {
-    height: 30px;
-    width: 30px;
-    position:absolute;
-    inset: 0;
-    margin: auto;
-    color: var(--primary);
-}
-
+/*
+############## NAVIGATION ##############
+*/
 
 nav {
     height: 50px;
@@ -122,42 +173,19 @@ nav a:hover {
     color: var(--accent);
 }
 
-#profile-section {
-    padding: 30px 15px 30px 15px;
-    background: var(--bg);
-    text-align: center;
-    position: relative;
-    scroll-margin-top: 50px;
-}
-
-.profile h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-    color: var(--primary);
-}
-
-.profile .subtitle {
-    height: 50px;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.profile .description {
-    font-size: 1.1rem;
-    max-width: 600px;
-    margin: 0 auto 2rem;
-}
+/*
+############## SECTION ##############
+*/
 
 .section {
-    background: var(--bg);
-    padding: 2.5rem;
+    padding: 5vh 10vw;
     transition: transform 0.3s ease;
 }
 
 .section h2 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    color: var(--primary);
+    color: var(--text);
     position: relative;
     display: inline-block;
 }
@@ -173,8 +201,114 @@ nav a:hover {
     border-radius: 3px;
 }
 
+.section-flex {
+    display: flex;
+    flex-flow: row wrap;
+}
+/*
+############## PROFILE ##############
+*/
+
+#profile-section {
+    position: relative;
+    scroll-margin-top: 50px;
+}
+#profile-section .profile {
+    text-align: center;
+    gap: 15px;
+    padding: 50px;
+}
+
+#profile-section .profile-details, #profile-section .profile-skills {
+    align-items: center;
+    justify-content: center;
+}
+
+#profile-section .profile-details {
+    flex: 3;
+    padding: 15px;
+    text-align: left;
+}
+
+#profile-section .profile-skills {
+    flex: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 150px;
+    grid-gap: 6px;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+    z-index: 1;
+    padding: 15px;
+}
+
+#profile-section h1 {
+    font-size: 1.75rem;
+    margin-bottom: 5px;
+    color: var(--primary);
+}
+
+#profile-section .subtitle {
+    height: 50px;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+#profile-section .description {
+    font-size: 1.1rem;
+    max-width: 600px;
+}
+
+#profile-section .contact-links {
+    margin-top: 15px;
+}
+
+.profile-skills .skill {
+    color: var(--text);
+    background: var(--bg-alt);
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100px;
+    position: relative;
+    padding: 10px;
+}
+
+.profile-skills .skill img {
+    width: 80px;
+    border-radius: 10px;
+}
+
+.profile-skills .skill::after, .profile-skills .skill::before {
+    content: '';
+    height: 100%;
+    width: 100%;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s ease;
+    background-image: conic-gradient(
+        var(--primary),
+        var(--accent),
+        var(--primary)
+    );
+    border-radius: 5px;
+    z-index: -1;
+    padding: 2px;
+}
+.profile-skills .skill::before {
+    filter: blur(0.5rem);
+    opacity: 0.5;
+}
+
+
+/*
+############## PROJECTS ##############
+*/
+
+
 .projects {
-    
     display: flex;
     flex-flow: column;
     position: relative;
@@ -183,12 +317,16 @@ nav a:hover {
 .project-item {
     padding: 2rem;
     margin-bottom: 1.5rem;
-    display: flex;
     align-items: stretch;
-    flex-flow: row wrap;
     gap: 30px;
-    height: 600px;
+    height: 500px;
     position: relative;
+}
+
+@property --line-angle {
+    syntax: "<line-angle>";
+    initial-value: 0deg;
+    inherits: false;
 }
 .project-item::after {
     content: '';
@@ -196,27 +334,89 @@ nav a:hover {
     bottom: -5px;
     left: 10%;
     width: 80%;
-    height: 2px;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
+    height: 4px;
+    background: linear-gradient(45deg, var(--primary), var(--accent), var(--primary), var(--accent));
+	background-size: 200% 200%;
+    animation: 3s line-spin ease infinite;
     border-radius: 1px;
+}
+@keyframes line-spin {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 50% 100%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 .project-description {
     flex: 3;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    padding: 15px;
 }
 
 .project-image {
     display: flex;
     flex: 4;
     align-items: center;
+    transition: all 500ms ease;
+    padding: 15px;
+}
+.project-image:hover {
+    transform: scale(1.05);
 }
 
 .slideshow-container {
     position: relative;
     width: 100%;
     height: 100%;
+    background-color: var(--bg-alt);
+    filter: drop-shadow(6px 6px 0px var(--primary));
+    border-radius: 15px;
+}
+.slideshow-container button {
+    position: absolute;
+    outline: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text);
+    text-shadow: black 0px 0px 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
+.slideshow-container button.left-arrow {
+    left:10px;
+    top:40%;
+}
+
+.slideshow-container button.left-arrow:hover {
+    transform: scale(1.3) rotate(1turn);
+}
+
+.slideshow-container button.right-arrow {
+    right:10px;
+    top:40%;
+}
+.slideshow-container button.right-arrow:hover {
+    transform: scale(1.3) rotate(-1turn);
+}
+
+.slide-show-controls {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: none;
+    align-content: center;
+    text-align: center;
+}
 .slide {
     position: absolute;
     width: 100%;
@@ -231,10 +431,9 @@ nav a:hover {
 }
 
 .project-image img {
-    max-height: 450px;
+    max-height: 400px;
     max-width: 100%;
     height: auto;
-    filter: drop-shadow(6px 6px 0px var(--primary));
 }
 
 .project-item h3 {
@@ -290,13 +489,13 @@ nav a:hover {
     z-index: -1;
 }
 
+.reverse-row {
+    flex-flow: row-reverse wrap;
+}
+
 @media (max-width: 768px) {
     .container {
         padding: 1rem;
-    }
-
-    .profile {
-        padding: 2rem;
     }
 
     .profile h1 {
@@ -308,7 +507,7 @@ nav a:hover {
     }
 
     .section {
-        padding: 1.5rem;
+        padding: 5vh 4vw;
     }
 
     .section h2 {
@@ -319,9 +518,12 @@ nav a:hover {
         flex-direction: column;
         align-items: center;
     }
+    .section-flex {
+        flex-flow: column wrap;
+    }
 
     .project-item {
-        flex-flow: column wrap;
+        height: 650px;
     }
 
 
@@ -331,10 +533,6 @@ nav a:hover {
     font-family: "Space Mono", monospace;
     font-weight: 700;
     font-style: normal;
-}
-
-.reverse-row {
-    flex-flow: row-reverse wrap;
 }
 
 .hidden-animated {
