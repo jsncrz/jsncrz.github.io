@@ -4,7 +4,7 @@ if (initialized) {
     initializeAll();
 }
 function initialLoad() {
-    const title = ["Hi, I'm Jason.", "A passionate Full Stack Developer.", "Let's build something powerful together."];
+    const title = ["Hi, I'm Jason.", "A Full Stack Developer.", "Let's build something powerful together.", "(This site is under construction)"];
     writeChars('hero-text', title, 0, 0);
 }
 
