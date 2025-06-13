@@ -89,7 +89,7 @@ function writeChars(elementId, text, index, lineIndex) {
             writeChars(elementId, text, index, lineIndex);
         }
     } else {
-        document.getElementById('hero-button').classList.remove('hidden-animated');
+        document.getElementById('hero-button').classList.remove('hidden');
         if (!initialized) {
             initializeAll();
             sessionStorage.setItem("initialized", true);
