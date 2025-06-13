@@ -439,7 +439,7 @@ nav a:hover {
 }
 
 .project-image img {
-    max-height: 400px;
+    max-height: 100%;
     max-width: 100%;
     height: auto;
     border-radius: 15px;
@@ -577,6 +577,7 @@ nav a:hover {
     .project-item {
         height: 650px;
     }
+
 }
 
 .monospace {
