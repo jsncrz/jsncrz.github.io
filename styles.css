@@ -65,17 +65,18 @@ body {
     color: var(--text);
     background: var(--bg-alt);
     font-size: 1rem;
-    margin-top: 0 auto;
     height: 50px;
     width: 200px;
     padding: 15px;
-    transition: all 0.5s ease;
     cursor: pointer;
     outline: none;
     border-radius: 5px;
     border: none;
     position: relative;
     text-shadow: #ece0c8 2px 1px 8px;
+    transition: all 0.5s ease;
+    transition-behavior: allow-discrete;
+    opacity: 1
 }
 
 @property --angle {
@@ -576,8 +577,6 @@ nav a:hover {
     .project-item {
         height: 650px;
     }
-
-
 }
 
 .monospace {
@@ -586,16 +585,7 @@ nav a:hover {
     font-style: normal;
 }
 
-.hidden-animated {
-    opacity: 0;
-    transition: all 0.5s ease;
-    pointer-events: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    cursor: default;
-}
-
 .hidden {
     display: none;
+    opacity: 0;
 }
