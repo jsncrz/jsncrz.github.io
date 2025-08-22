@@ -7,39 +7,11 @@ if (initialized) {
     initializeAll();
 }
 function initialLoad() {
-    const title = ["Hi, I'm Jason.", "A Full Stack Developer.", "Let's build something powerful together.", "(This site is under construction)"];
+    const title = ["Hi, I'm Jason.", "A Full Stack Developer.", "Let's build something powerful together."];
     writeChars('hero-text', title, 0, 0);
 }
 
-function initializeParticles() {
-    (async () => {
-        await loadFireflyPreset(tsParticles);
-
-        await tsParticles.load({
-            id: "tsparticles",
-            options: {
-                preset: "firefly",
-                background: {
-                    color: "#21252b"
-                },
-                particles: {
-                    size: {
-                        value: { min: 0.1, max: 5 },
-                    },
-                    number: {
-                        limit: { 
-                            mode: "delete",
-                            value: 50
-                        }
-                    }
-                }
-            },
-        });
-    })();
-    
-}
 function initializeAll() {
-    initializeParticles();
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
